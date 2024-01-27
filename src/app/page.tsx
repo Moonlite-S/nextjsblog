@@ -1,4 +1,4 @@
-import './globals.css'
+import '../_styles/globals.css'
 
 function Picture(URL : {URL_String:String}) {
   return (

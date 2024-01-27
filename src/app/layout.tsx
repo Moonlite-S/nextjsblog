@@ -1,10 +1,12 @@
-import './globals.css'
+import Link from 'next/link'
+import '../_styles/globals.css'
 
 export default function RootLayout({
     children,
   }: {
     children: React.ReactNode
   }) {
+
     return (
       <>
       <html>
@@ -12,13 +14,13 @@ export default function RootLayout({
           <div className='bg-blue-900 containter mx-auto'>
             <nav className='flex flex-row-reverse'>
               <div className='p-5 hover:bg-blue-700'>
-                <a href= "/" className='text-white'>Home</a>
+                <Link href= "/" className='text-white'>Home</Link>
               </div>
               <div className='p-5 hover:bg-blue-600'>
-                <a href= "./Blogs" className='text-white'>Blogs</a>
+                <Link href= "./Blogs" className='text-white'>Blogs</Link>
               </div>
               <div className='p-5 hover:bg-blue-600'>
-                <a href= "./AboutMe" className='text-white'>About Me</a>
+                <Link href= "./AboutMe" className='text-white'>About Me</Link>
               </div>
             </nav>
           </div>
