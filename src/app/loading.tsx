@@ -9,10 +9,13 @@ export default function Loading() {
     }, []);
 
     return(
-        <div>
-            <h1>
-                Loading
-            </h1>
+        <div className="mx-auto container">
+        <button type='button' className="bg-blue-200">
+            <svg className="animate-spin h-5 w-5 mr-3 mx-auto" viewBox="0 0 50 50">
+                <circle className="stroke-current text-green-500" cx="25" cy="25" r="20" fill="none" strokeWidth="5" />
+            </svg>
+            <h1>Loading</h1>
+        </button>
         </div>
     )
 }
