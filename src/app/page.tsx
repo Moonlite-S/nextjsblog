@@ -1,21 +1,12 @@
+import {PictureBanner} from '@/_components/blog'
 import '../_styles/globals.css'
-
-function Picture(URL : {URL_String:String}) {
-  return (
-    <div className='bg-fixed h-52' style={{
-      backgroundImage:
-        'url(' + URL.URL_String + ')',
-    }}>
-    </div>
-  )
-}
 
 function App() {
   
   return (
     <>
       {/* Main Body */}
-      <Picture URL_String="https://cdn.wallpapersafari.com/20/18/cFouV9.jpg"/>
+      <PictureBanner URL_String="https://cdn.wallpapersafari.com/20/18/cFouV9.jpg"/>
 
       <div>
       </div>

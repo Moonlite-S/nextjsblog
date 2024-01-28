@@ -13,13 +13,13 @@ export default function RootLayout({
         <body>
           <div className='bg-blue-900 containter mx-auto'>
             <nav className='flex flex-row-reverse'>
-              <div className='p-5 hover:bg-blue-700'>
+              <div className='p-5 hover:bg-blue-700 duration-100 ease-in'>
                 <Link href= "/" className='text-white'>Home</Link>
               </div>
-              <div className='p-5 hover:bg-blue-600'>
+              <div className='p-5 hover:bg-blue-600 duration-100 ease-in'>
                 <Link href= "./Blogs" className='text-white'>Blogs</Link>
               </div>
-              <div className='p-5 hover:bg-blue-600'>
+              <div className='p-5 hover:bg-blue-600 duration-100 ease-in'>
                 <Link href= "./AboutMe" className='text-white'>About Me</Link>
               </div>
             </nav>
