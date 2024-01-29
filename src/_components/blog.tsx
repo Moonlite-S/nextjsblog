@@ -1,58 +1,35 @@
 'use client'
 
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 type BlogProps = {
+  URL_Page: string;
   URL_String: string;
   HeaderText: string;
   BodyText: string;
-  Alignment: string;
 };
 
-export default function Blog(
-  {URL_String, HeaderText, BodyText, Alignment}: BlogProps
+export function Blog(
+  {URL_Page, URL_String, HeaderText, BodyText}: BlogProps
 ) {
-  const [isShown, setIsShown] = useState(false);
-  const [color, setColor] = useState('bg-blue-300');
-
-  useEffect(() => {
-    console.log("Use Effect in effect!");
-    setColor('bg-red-200');
-  }, [isShown]);
-
   return (
-    <>
-    <div className='mx-auto p-5 container text-center'>
-    <button onClick={() => setIsShown(!isShown)} className={color + '  transition-100 duration-100 hover:-translate-y-1'}>
-      Click to show Blog
-    </button>
-    </div>
-
-    {isShown ? (
-    <>
-    <div className="bg-blue-200">
-      <PictureBanner URL_String={URL_String}/>
-
-      <div className="p-5">
-        <div className={'mx-auto text-center p-5' + Alignment}>
+    <div className="hover:scale-110 duration-100 ease-in-out bg-mocha-200 h-[400px] border-solid border-2 border-mocha-400 rounded text-mocha-600">
+      <Link href={URL_Page}>
+        <PictureBanner URL_String={URL_String}/>
+        <div className='mx-auto text-center py-5 px-2 border-solid border-t-2 border-mocha-400'>
           <h1 className="text-lg font-bold">{HeaderText}</h1>
           <p className="leading-relaxed">{BodyText}</p>
         </div>
-      </div>
-        <div className="mx-auto p-5 text-center">
-      </div>
+      </Link>
     </div>
-    </>
-     ) : null}
-    </>
   )
 }
 
 export function PictureBanner(URL : {URL_String:String}) {
   return (
-    <div className='bg-fixed bg-center' style={{
+    <div className='bg-center' style={{
       backgroundImage:
-        'url(' + URL.URL_String + ')', height:'200px'
+        'url(' + URL.URL_String + ')', height:'150px'
     }}>
     </div>
   )
