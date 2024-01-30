@@ -5,8 +5,8 @@ export default function Pages (){
 
         <FullBlog URL_Page={"LoneTrail"} 
         URL_String={"https://i.imgur.com/dc0Ajag.png"} 
-        HeaderText="Arknights Lone Trail, A Cinematic Masterpiece" 
-        BodyText={"As the words of a great Youtube once said, 'Activate Melantha Skill now'"}
+        HeaderText="Arknights: Lone Trail, A Cinematic Masterpiece" 
+        BodyText={"A dream of one that influences the future of Terra, Kristen Wright only had one goal: To prove to the world about the truth of space."}
         Date="November 21, 2023" />
         
     )

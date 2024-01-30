@@ -5,7 +5,8 @@ type BlogProps = {
   URL_String: string;
   HeaderText: string;
   BodyText: string;
-  Date: string;
+  Date?: string;
+  Alignment?: string;
 };
 
 export function Blog(
@@ -31,16 +32,15 @@ export function FullBlog (
   {URL_String, HeaderText, BodyText, Date}: BlogProps
 ){
   return (
-    <div className="m-5 p-10 bg-mocha-100 justify-center" >
+    <div className="m-5 p-10 bg-mocha-100 justify-center rounded" >
       <PictureBanner URL_String={URL_String}/>
       <div className="flex flex-row p-5">
-        <h1 className="basis-1/2">{HeaderText}</h1>
+        <h1 className="basis-1/2 font-bold text-xl">{HeaderText}</h1>
         <h3 className="basis-1/2 text-right">Posted on {Date}</h3>
       </div>
-      <div className="">
-        <p>{BodyText}</p>
+      <div className="p-5 border-t-2 border-mocha-600">
+        <p className="msg-wrapper">{BodyText}</p>
       </div>
-
     </div>
 )
 }
@@ -52,5 +52,36 @@ export function PictureBanner(URL : {URL_String:String}) {
         'url(' + URL.URL_String + ')', height:'150px'
     }}>
     </div>
+  )
+}
+
+export function HomeBlog(
+  {URL_Page, URL_String, HeaderText, BodyText, Alignment}: BlogProps,
+) {
+  return(
+    <Link href={URL_Page} target="_blank2">
+      <div className='m-5 p-10 bg-mocha-100 transition-all justify-center'>
+
+      {Alignment == 'text-right' ? 
+      <div className='py-5 flex flex-row box-content h-64'>
+        <div className='bg-sky-200 p-5 basis-1/3 text-center border-2 border-mocha-700 bg-center' style={{backgroundImage: 'url(' + URL_String + ')'}}></div>
+
+        <div className={'bg-blue-200 p-5 basis-2/3 text-left'}>
+          <h1 className='font-bold text-xl py-5'>{HeaderText}</h1>
+          <h2>{BodyText}</h2>
+        </div>
+      </div>
+      : 
+      <div className='py-5 flex flex-row box-content h-64'>
+      <div className={'bg-blue-200 p-5 basis-2/3 text-right'}>
+        <h1 className='font-bold text-xl py-5'>{HeaderText}</h1>
+        <h2>{BodyText}</h2>
+      </div>
+
+      <div className='bg-sky-200 p-5 basis-1/3 text-center border-2 border-mocha-700 bg-center' style={{backgroundImage: 'url(' + URL_String + ')'}}></div>
+    </div>}
+    
+    </div>
+  </Link>
   )
 }
