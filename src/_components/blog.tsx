@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type BlogProps = {
+interface BlogProps  {
   URL_Page: string;
   URL_String: string;
   HeaderText: string;

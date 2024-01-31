@@ -13,21 +13,6 @@
   }
 }
 
-@layer utilities {
-    @variants responsive {
-      /* Hide scrollbar for Chrome, Safari, and Opera */
-      .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-  
-      /* Hide scrollbar for IE, Edge, and Firefox */
-      .hide-scrollbar {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-      }
-    }
-  }
-
 html {
     background-color: #725536e0;
     font-family: 'Arial', 'Roboto';
