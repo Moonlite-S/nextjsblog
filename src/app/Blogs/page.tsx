@@ -1,10 +1,18 @@
-import { Blog } from "@/_components/blog";
+import { BlogPost } from "@prisma/client";
+import { Blog, getBlogs } from "@/_components/blog";
 
-export default function Page() {
+export default async function Page() {
+    const Blogs = await getBlogs()
     return(
         <>
         <div className="m-5 p-10 bg-mocha-100 transition-all justify-center rounded" >
             <h1 className="text-lg font-bold text-right text-mocha-1000">Latest Blogs</h1>
+        </div>
+
+        <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded" >
+            {Blogs.map((blog: BlogPost) => 
+                <Blog key={blog.id} {...blog} />
+            )}
         </div>
 
         <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded" >

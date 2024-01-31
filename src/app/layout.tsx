@@ -16,6 +16,7 @@ export default function RootLayout({
             <Link href= "/Blogs" className='text-white'> <div className='p-5 hover:bg-mocha-400 duration-100 ease-in'><h1>Blogs</h1></div></Link>
             <Link href= "/AboutMe" className='text-white'> <div className='p-5 hover:bg-mocha-400 duration-100 ease-in'><h1>About Me</h1></div></Link>
             <Link href= "/LogIn" className='text-white'> <div className='p-5 hover:bg-mocha-400 duration-100 ease-in'><h1>Log In</h1></div></Link>
+            <Link href= "/CreateBlog" className='text-white'> <div className='p-5 hover:bg-mocha-400 duration-100 ease-in'><h1>Create Blog</h1></div></Link>
             </nav>
           </div>
 
