@@ -15,6 +15,7 @@ model BlogPost {
   picture String
   title String
   body String
+  blogCreated String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
