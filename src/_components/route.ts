@@ -4,6 +4,7 @@ import { prisma } from "@/db";
 import { redirect } from "next/navigation";
 
 export async function GetBlog(id: string){
+    console.log(id)
     return prisma.blogPost.findUnique({where: {id}})
 }
 
@@ -11,12 +12,9 @@ export async function GetBlogs(){
   return prisma.blogPost.findMany()
 }
 
-export async function DeleteAllBlogs(){
-  return prisma.blogPost.deleteMany({})
-}
-
 export async function DeleteBlog(id: string){
-  console.log(id) 
+  console.log("Deleting blog " + id)
+  await prisma.blogPost.delete({where: {id}})
   redirect("/Blogs")
 }
 
