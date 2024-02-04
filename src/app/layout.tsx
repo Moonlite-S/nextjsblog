@@ -1,6 +1,9 @@
-import Link from 'next/link'
+"use client"
+
 import '../_styles/globals.css'
+import Link from 'next/link'
 import { ClerkProvider, OrganizationSwitcher, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { useEffect, useState } from 'react'
 
 function NavBar(){
   return(
@@ -49,15 +52,28 @@ export default function RootLayout({
     children,
   }: {
     children: React.ReactNode
-  }) {
+  }) 
+  {
+  const [state, setState] = useState("")
+
+  useEffect(() => {
+    if (state === "anim-fadeIn") {
+      const timer = setTimeout(() => 
+      setState(""), 2000)
+
+      return () => clearTimeout(timer)
+    } else {
+      
+    }
+
+  }, [state])
+
     return (
     <ClerkProvider>
       <html>
         <body>
           <NavBar /> 
-
-          <div>{children}</div>
-  
+          <div className={state}>{children}</div>
         </body>
       </html>
     </ClerkProvider>
