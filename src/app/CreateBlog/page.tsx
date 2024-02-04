@@ -1,9 +1,10 @@
-import { CreateBlog } from "@/_components/route";
+import { CreateBlog } from "@/app/api/Blog/route";
+import React from "react";
 
 export default function Pages(){
     return (
         <>
-        <div className="m-5 p-10 bg-mocha-100">
+        <div className="m-5 p-10 bg-mocha-100 rounded">
             <h1 className="py-2 border-b-2 border-mocha-700">Today's Date: {new Date().toLocaleDateString()} </h1>
             <form className="py-2 flex flex-col" action={CreateBlog} >
                 <label className="text-mocha-1000" htmlFor="title">Title</label>

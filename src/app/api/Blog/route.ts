@@ -1,7 +1,19 @@
 "use server"
 
 import { prisma } from "@/db";
+import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+
+function VerifyUser() {
+  const { userid }: any = auth()
+  
+  if (!userid) {
+    throw new Error("Not logged in")
+  }
+
+  else
+    return
+}
 
 export async function GetBlog(id: string){
     console.log(id)
@@ -13,12 +25,14 @@ export async function GetBlogs(){
 }
 
 export async function DeleteBlog(id: string){
+  VerifyUser()
   console.log("Deleting blog " + id)
   await prisma.blogPost.delete({where: {id}})
   redirect("/Blogs")
 }
 
 export async function UpdateBlog(id: string, data: FormData){
+  VerifyUser()
   await prisma.blogPost.update(
     {
       where: {id},
@@ -33,6 +47,7 @@ export async function UpdateBlog(id: string, data: FormData){
 }
 
 export async function CreateBlog(data: FormData){
+  VerifyUser()
   const title = data.get("title")?.valueOf()
   if (typeof title !== "string" || title.length < 1) {
       throw new Error("Invalid title")

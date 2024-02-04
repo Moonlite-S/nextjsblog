@@ -1,6 +1,6 @@
 import { BlogPost } from "@prisma/client";
 import { Blog } from "@/_components/ClientBlog";
-import { GetBlogs } from "../../_components/route";
+import { GetBlogs } from "../api/Blog/route";
 
 export default async function Page() {
     const Blogs = await GetBlogs()
@@ -15,7 +15,6 @@ export default async function Page() {
                 <Blog key={blog.id} {...blog} />
             )}
         </div>
-
         </>
     )
 }

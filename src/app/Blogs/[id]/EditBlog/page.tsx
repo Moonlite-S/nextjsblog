@@ -1,4 +1,4 @@
-import { UpdateBlog } from "@/_components/route"
+import { UpdateBlog } from "@/app/api/Blog/route"
 import { prisma } from "@/db"
 import { BlogPost } from "@prisma/client"
 

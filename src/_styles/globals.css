@@ -28,3 +28,31 @@ html {
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
+
+.cl-card {
+  background-color: theme(colors.mocha.100);
+}
+
+.cl-card span {
+  color: theme(colors.mocha.1000);
+}
+
+.cl-card button {
+  color: theme(colors.mocha.900);
+}
+
+.cl-card h1, .cl-card p {
+  color: theme(colors.mocha.1000);
+}
+
+.cl-profileSectionPrimaryButton:hover {
+  background-color: theme(colors.mocha.400);
+}
+
+.cl-formButtonPrimary {
+  background-color: theme(colors.mocha.300);
+}
+
+.cl-formButtonReset:hover {
+  background-color: theme(colors.mocha.400);
+}

@@ -12,13 +12,6 @@ export default function App() {
           {"Even though it's just a fake, I would like to put some random blog things that will make this site burst with life!"}
         </p>
 
-        <h2 className='my-5'>
-          {"Here are some things I've been trying to work on in my spare time:"}
-        </h2>
-        
-        <h3 className='my-5'>
-          {"Links lead to their GitHub repos when applicable."}
-        </h3>
       </div>
 
     </>

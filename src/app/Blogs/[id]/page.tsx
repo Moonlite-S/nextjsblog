@@ -13,6 +13,7 @@ export default async function Page({ params } : {params: {id: string}}) {
                 <h1 className="m-5 text-right">{blogCreated}</h1>
             </div>
         </div>
+        
         <div className="m-5 p-10 bg-mocha-100 justify-center rounded" >
             <h1 className="msg-wrapper">{body}</h1>
         </div>
