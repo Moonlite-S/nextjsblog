@@ -1,9 +1,11 @@
 "use client"
 
 import '../_styles/globals.css'
+import { AnimatePresence, motion, useAnimate, usePresence } from "framer-motion"
 import Link from 'next/link'
 import { ClerkProvider, OrganizationSwitcher, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+
 
 function NavBar(){
   return(
@@ -54,26 +56,34 @@ export default function RootLayout({
     children: React.ReactNode
   }) 
   {
-  const [state, setState] = useState("")
+    const [scope, animate] = useAnimate()
+    const [isPresent, safeToRemove] = usePresence()
 
-  useEffect(() => {
-    if (state === "anim-fadeIn") {
-      const timer = setTimeout(() => 
-      setState(""), 2000)
-
-      return () => clearTimeout(timer)
-    } else {
-      
-    }
-
-  }, [state])
+    useEffect(() => {
+      if (isPresent) {
+        const enterAnim = async () => {
+          await animate(scope.current, {opacity: [0, 1]}, {ease: "easeInOut", duration: 0.5})
+          await animate(scope.current, {y: [100, 0]}, {ease: "easeInOut", duration: 1})
+        }
+        enterAnim()
+      } else {
+        const exitAnim = async () => {
+          await animate(scope.current, {y: [0, 100]}, {ease: "easeInOut", duration: 1})
+          await animate(scope.current, {opacity: [1, 0]}, {ease: "easeInOut", duration: 0.5})
+          safeToRemove()
+        }
+        exitAnim()
+     }
+    }, [isPresent])
 
     return (
     <ClerkProvider>
       <html>
         <body>
           <NavBar /> 
-          <div className={state}>{children}</div>
+          <AnimatePresence>
+            <div ref={scope}>{children}</div>
+          </AnimatePresence>
         </body>
       </html>
     </ClerkProvider>
