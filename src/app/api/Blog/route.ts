@@ -5,9 +5,9 @@ import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 function VerifyUser() {
-  const { userid }: any = auth()
+  const { userId } : { userId: string | null } = auth()
   
-  if (!userid) {
+  if (!userId) {
     throw new Error("Not logged in")
   }
 

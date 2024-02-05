@@ -4,12 +4,18 @@ import Link from "next/link"
 import { BlogPost } from "@prisma/client"
 import { DeleteBlog } from "../app/api/Blog/route"
 import { Protect } from "@clerk/nextjs"
+import { AnimatePresence, motion } from "framer-motion"
+import React, { useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 
 export function Blog(
   {id, picture, title, body, blogCreated}: BlogPost
 ) {
   return (
     <Link href={`/Blogs/${id}`}>
+      <TransitionUp>
+        <motion.div
+        whileTap={{scale: 0.9}}>
       <div className="hover:scale-105 hover:bg-mocha-400 duration-75 ease-in-out bg-mocha-200 border-solid border-2 border-mocha-1000 rounded text-mocha-1000">
           <PictureBanner URL_String={picture}/>
           <div className='mx-auto text-center py-5 px-2 border-solid border-t-2 border-mocha-900 h-[200px] overflow-hidden'>
@@ -21,6 +27,8 @@ export function Blog(
             <p>{blogCreated}</p>
           </div>
       </div>
+      </motion.div>
+      </TransitionUp>
     </Link>
   )
 }
@@ -50,5 +58,20 @@ export async function BlogButtons(id: {id: string}){
       </Protect>  
     </div>
 
+  )
+}
+
+export function TransitionUp(
+  {children} : {children: React.ReactNode}) {
+  return (
+    <AnimatePresence>
+      <motion.div
+      initial={{y: 100, opacity: 0}}
+      animate={{y: 0, opacity: 1}}
+      exit={{y: 100, opacity: 0}}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   )
 }

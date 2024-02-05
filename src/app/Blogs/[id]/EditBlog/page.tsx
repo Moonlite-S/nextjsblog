@@ -21,6 +21,7 @@ export default async function Page({ params } : {params: {id: string}}) {
                 <textarea name="body" defaultValue={body} className="bg-mocha-400 text-mocha-900 h-[20rem] border-2 border-mocha-900 " />
 
                 <button type="submit" className="border-2 border-mocha-900 bg-mocha-300 py-2 my-5 hover:bg-mocha-500 transition">Update Blog</button>
+
             </form>
         </div>
         </>
