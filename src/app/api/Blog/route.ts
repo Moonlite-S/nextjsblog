@@ -24,6 +24,11 @@ export async function GetBlogs(){
   return prisma.blogPost.findMany()
 }
 
+export async function GetArrayBlogs() {
+  const Blogs = await GetBlogs()
+  return Blogs.reverse()
+}
+
 export async function DeleteBlog(id: string){
   VerifyUser()
   console.log("Deleting blog " + id)
@@ -69,3 +74,4 @@ export async function CreateBlog(data: FormData){
 
   redirect("/Blogs")
 }
+

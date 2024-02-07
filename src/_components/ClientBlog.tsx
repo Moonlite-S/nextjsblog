@@ -2,11 +2,18 @@
 
 import Link from "next/link"
 import { BlogPost } from "@prisma/client"
-import { DeleteBlog } from "../app/api/Blog/route"
+import { DeleteBlog, GetBlogs } from "../app/api/Blog/route"
 import { Protect } from "@clerk/nextjs"
 import { AnimatePresence, motion } from "framer-motion"
-import React, { useEffect } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
 export function Blog(
   {id, picture, title, body, blogCreated}: BlogPost
@@ -73,5 +80,72 @@ export function TransitionUp(
         {children}
       </motion.div>
     </AnimatePresence>
+  )
+}
+
+export function HoverUp(
+  {children} : {children: React.ReactNode}) {
+  return (
+    <motion.div
+    whileHover={{y: -10}}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+export function Pageination (
+  {
+    totalItems,
+    itemsPerPage,
+    currentPage,
+    setCurrentPage 
+  } : {
+    totalItems: number,
+    itemsPerPage: number,
+    currentPage: number,
+    setCurrentPage: any
+  }
+) {
+
+  let pages = []
+  for (let i = 1; i<=Math.ceil(totalItems/itemsPerPage); i++){
+    pages.push(i)
+  }
+
+  const handleNextPage = () => {
+    if (currentPage < pages.length){
+      setCurrentPage(currentPage + 1)
+    }
+  }
+
+  const handlePrevPage = () => {
+    if (currentPage > 1){
+      setCurrentPage(currentPage - 1)
+    }
+  }
+
+  return(
+    <Pagination className="">
+      <PaginationContent className="">
+        <PaginationItem >
+          <PaginationPrevious onClick={() => handlePrevPage()} className="flex flex-row px-5">Previous</PaginationPrevious>
+        </PaginationItem>
+
+          {pages.map((page, idx) => (
+            <PaginationItem
+              key={idx}
+              className={currentPage === page ? "bg-mocha-500 rounded-md px-5" : "px-5"}>
+
+              <PaginationLink onClick={() => setCurrentPage(page)} className="relative top-2">{page}</PaginationLink>
+
+            </PaginationItem>
+          ))}
+
+        <PaginationItem>
+          <PaginationNext onClick={() => handleNextPage()} className="flex flex-row px-5">Next</PaginationNext>
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   )
 }

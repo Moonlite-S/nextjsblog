@@ -34,10 +34,10 @@ export default function AboutMe() {
         
         <div className="m-5 p-10 bg-mocha-100 transition-all justify-center rounded" >
             <p className="indent-5">Oh, if you wanted to see what one my first websites was, it was a Vocaloid Fan Site. I'm still very fucking proud of it to this day. All written in normal HTML CSS and like one line of Javascript. It features a fixed background that changes between each white div box and hover transitions. Very basic stuff, but I thought I was the next Picasso at the time.</p>
-            <Image src={vfs} alt="Vocaloid Fan Site" className="py-5"/>
+            <Image src={vfs} alt="Vocaloid Fan Site" className="py-5" style={{margin: "auto"}}/>
 
             <p className="indent-5">There was also this one. I found this on the Vocaloid site, but I couldn't find the files for it. I was really interested in making fan sites, huh. I made this one before the Vocaloid site and it was just a very simple wiki / fan site for the franchise. (Oh how times have changed...)</p>
-            <Image src={ndm} alt="Hyperdimension Neptunia Fansite" className="py-5"/>
+            <Image src={ndm} alt="Hyperdimension Neptunia Fansite" className="py-5" style={{margin: "auto"}}/>
         </div>
         </TransitionUp>
     )
