@@ -12,6 +12,9 @@ This is my first Next.js personal project where I create a solo blog site for my
 
 ### Changelog
 
-> (1/29/2024):
->
+(2/7/2024):
+> Bro, I forgot I have a README file. I've been doing the changelog on the commits for no reason. To sum up the things I've done til this point, I've added: *Authentication* and a login page, *Transitions* for each page and interaction, created a *database* that holds all my blogs, created a *blog maker* page to easily create more blogs, created a way to *edit and delete blogs*, and finally added some *coffee pictures* to make it more cozy-esque.
+> For the final stretch, I want to add a little more spice to it before deploying it.  
+
+(1/29/2024):
 > I haven't actually done any changelog before this, but I did do a lot. Up til this point, I had done: the Home, Blogs, and About Me pages with their respective contents (except for the About Me page).
