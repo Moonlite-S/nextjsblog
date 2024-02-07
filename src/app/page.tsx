@@ -1,23 +1,40 @@
+"use client"
+
 import '../_styles/globals.css'
 import { TransitionUp, Blog, HoverUp } from '@/_components/ClientBlog'
-import { GetBlogs } from './api/Blog/route'
+import { GetArrayBlogs } from './api/Blog/route'
 import { BlogPost } from '@prisma/client'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
-export default async function App() {
-  const Blogs = await GetBlogs()
+export default function App() {
+  const [Blogs, setBlogs] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+            const getBlogs= await GetArrayBlogs()
+            setBlogs(getBlogs)        
+    }
+    fetchData()   
+}, [])
+
   return (
     <>
     <TransitionUp>
-      <div className='bg-cover h-[60rem]' style={{backgroundImage: "url('/coffe.jpg')"}}>
+      <div className='bg-cover h-[40rem]' style={{backgroundImage: "url('/coffe.jpg')"}}>
         <HoverUp>
           <h1 className='text-mocha-1000 text-5xl font-bold text-right drop-shadow-xl pt-10 pr-10 hover:drop-shadow-2xl transition'>
             Welcome,
           </h1>
         </HoverUp>
         <HoverUp>
-          <h1 className='text-mocha-1000 text-6xl font-bold text-right drop-shadow-xl pr-10 hover:drop-shadow-2xl transition'>
-            Have a Nice Stay
+          <h1 className='text-mocha-1000 text-6xl font-bold text-right drop-shadow-xl pr-10 pt-2 hover:drop-shadow-2xl transition'>
+            have a nice stay
+          </h1>
+        </HoverUp>
+        <HoverUp>
+          <h1 className='text-mocha-1000 text-4xl font-bold text-right drop-shadow-xl pr-10 pt-4 hover:drop-shadow-2xl transition'>
+            and a hot coffee
           </h1>
         </HoverUp>
       </div>
@@ -34,15 +51,15 @@ export default async function App() {
         </p>
       </div>
 
-      <div className='m-5 p-10 bg-mocha-100 transition-all justify-center rounded'>
+      <div className='m-5 p-10 bg-mocha-100 transition-all justify-center rounded '>
         <h1 className='text-center font-bold text-2xl'> Latest Blogs: </h1>
-        <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded" >
+        <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded " >
               {Blogs.reverse().slice(0, 3).map((blog: BlogPost) => 
                   <Blog key={blog.id} {...blog} />
               )}
         </div>
         <div className='flex flex-col '>
-          <Link href="/Blogs" className='self-center'><button className='bg-mocha-400 text-mocha-1000 transition rounded p-2 m-2 hover:bg-mocha-500 ' >View All Blogs</button></Link>
+          <Link href="/Blogs" className='self-center'><button className='bg-mocha-400 text-mocha-1000 transition rounded p-2 m-5 hover:bg-mocha-500 ' >View All Blogs</button></Link>
         </div>
       </div>
     </TransitionUp>

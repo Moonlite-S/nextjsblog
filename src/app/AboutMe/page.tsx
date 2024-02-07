@@ -6,8 +6,10 @@ import Image from "next/image";
 export default function AboutMe() {
     return(
         <TransitionUp>
-        <div className="m-5 p-10 bg-mocha-100 transition-all justify-center rounded" >
-            <h1 className="font-bold text-xl text-right">About Me</h1>
+        <div className="bg-cover h-[20rem] bg-mocha-100 transition-all justify-center rounded" style={{backgroundImage: "url('/coffee3.jpg'", backgroundPosition: "bottom", backgroundColor: "#000000"}} >
+        <h1 className='text-mocha-100 text-5xl font-bold text-right drop-shadow-xl pt-[13rem] pr-10 hover:drop-shadow-2xl transition'>
+            About Me
+          </h1>
         </div>
 
         <div className="m-5 p-10 bg-mocha-100 transition-all justify-center rounded" >
@@ -29,7 +31,7 @@ export default function AboutMe() {
             <p className="font-bold">Clerk </p> <p>was even easier to setup. Like criminally so. I know authenication is normally way more difficult than this, but Clerk really streamlines this to the point where it's plug and play.</p>
             <p className="font-bold">TailwindCSS </p> <p>is a godsend. Tailwind makes it so you never have to deal with the horrors of CSS. It also supports custom settings which is something I really appreciate over something like Bootstrap.</p>
             <p className="font-bold">Framer Motion </p> <p>helps with the animations around the site. I've been trying to find a way to do it without any framework, but that shit's way too hard. This helped a lot.</p>
-
+            <p className="font-bold">Shadcn</p> <p> deserves a mention. It's great as it's good for picking up components for you use immediately. I used it for pagination for the blogs. There's no dependencies or anything, so it's more like a copy paste thing for easy access. I know I should be learning how to do these things myself, but I can learn it some other time.</p>
         </div>
         
         <div className="m-5 p-10 bg-mocha-100 transition-all justify-center rounded" >

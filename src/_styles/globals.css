@@ -6,6 +6,10 @@
   h1, h2, h3, h4, h5, h6, p {
     @apply text-mocha-1000;
   }
+
+  p {
+    @apply text-lg
+  }
 }
 
 html {

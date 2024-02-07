@@ -24,8 +24,10 @@ export default function Page() {
     return(
         <>
         <TransitionUp>
-            <div className="m-5 p-10 bg-mocha-100 transition-all justify-center rounded" >
-                <h1 className="text-lg font-bold text-right text-mocha-1000">Latest Blogs</h1>
+            <div className="h-[10rem] bg-cover bg-mocha-100 transition-all justify-center rounded" style={{backgroundImage: 'url("/coffee2.jpg")', backgroundPosition: "top", backgroundColor: "#000000"}}>
+                <h1 className='text-mocha-100 text-5xl font-bold text-right drop-shadow-xl py-10 pr-10 hover:drop-shadow-2xl transition'>
+                Recent Blogs
+                </h1>
             </div>
 
             <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded">
@@ -42,7 +44,6 @@ export default function Page() {
                     setCurrentPage={setCurrentPage}
                     />
             </div>
-
         </TransitionUp> 
         </>
     )

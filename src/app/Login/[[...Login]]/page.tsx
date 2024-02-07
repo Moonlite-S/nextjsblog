@@ -16,6 +16,7 @@ const Page = () => {
             headerTitle: "text-mocha-1000",
             formFieldLabel: "text-mocha-1000",
             formFieldInput: "bg-mocha-400 text-mocha-900 border-2 border-mocha-900",
+            footer: "hidden"
           }
         }
       }
