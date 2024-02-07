@@ -31,7 +31,6 @@ export async function GetArrayBlogs() {
 
 export async function DeleteBlog(id: string){
   VerifyUser()
-  console.log("Deleting blog " + id)
   await prisma.blogPost.delete({where: {id}})
   redirect("/Blogs")
 }
@@ -48,7 +47,7 @@ export async function UpdateBlog(id: string, data: FormData){
       }
     }
   )
-  redirect("/Blogs")
+  redirect(`/Blogs/${id}`)
 }
 
 export async function CreateBlog(data: FormData){

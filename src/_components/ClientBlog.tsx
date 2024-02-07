@@ -27,7 +27,7 @@ export function Blog(
           <div className='mx-auto text-center py-5 px-2 border-solid border-t-2 border-mocha-900 h-[200px] overflow-hidden'>
             <h1 className="text-lg font-bold">{title}</h1>
             <p className="leading-relaxed line-clamp">{body}</p>
-          </div>
+        </div>
           
           <div className='mx-auto px-2 border-solid border-t-2 border-mocha-900 h-[30px] text-right'>
             <p>{blogCreated}</p>
@@ -41,7 +41,7 @@ export function Blog(
 
 export function PictureBanner(URL : {URL_String:String}) {
   return (
-    <div className='bg-center' style={{
+    <div className='bg-center bg-cover' style={{
       backgroundImage:
         'url(' + URL.URL_String + ')', height:'150px'
     }}>
@@ -50,6 +50,13 @@ export function PictureBanner(URL : {URL_String:String}) {
 }
 
 export async function BlogButtons(id: {id: string}){
+  const handler = (id: string) => {
+    if (window.confirm("Are you sure you want to delete this blog?"))
+      DeleteBlog(id)
+    else
+      return
+  }
+
   return (
 
     <div className="m-5 p-5 bg-mocha-100 rounded" >
@@ -59,7 +66,7 @@ export async function BlogButtons(id: {id: string}){
           <p>You do not have permission to delete or edit posts.</p>
       }
       >
-        <button onClick={() => DeleteBlog(id.id)} className="px-2 mx-2 bg-mocha-900 hover:bg-mocha-700 rounded transition"><h1 className="text-mocha-100">Delete Blog</h1></button>
+        <button onClick={() => handler(id.id)} className="px-2 mx-2 bg-mocha-900 hover:bg-mocha-700 rounded transition"><h1 className="text-mocha-100">Delete Blog</h1></button>
         <Link href={`/Blogs/${id.id}/EditBlog`}><button className="px-2 mx-2 bg-mocha-500 hover:bg-mocha-600 rounded transition"><h1>Edit Blog</h1></button></Link>
       </Protect>  
     </div>

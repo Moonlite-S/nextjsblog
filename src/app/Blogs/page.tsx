@@ -2,7 +2,7 @@
 
 import { Blog, Pageination, TransitionUp } from "@/_components/ClientBlog";
 import { GetArrayBlogs } from "../api/Blog/route";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { BlogPost } from "@prisma/client";
 
 export default function Page() {
