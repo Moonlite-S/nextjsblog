@@ -16,12 +16,13 @@ function VerifyUser() {
 }
 
 export async function GetBlog(id: string){
-    console.log(id)
-    return prisma.blogPost.findUnique({where: {id}})
+    const Blog = prisma.blogPost.findUnique({where: {id}})
+    return Blog
 }
 
 export async function GetBlogs(){
-  return prisma.blogPost.findMany()
+  const Blogs = prisma.blogPost.findMany()
+  return Blogs
 }
 
 export async function GetArrayBlogs() {
