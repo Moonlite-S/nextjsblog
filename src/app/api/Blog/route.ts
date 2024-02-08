@@ -1,6 +1,6 @@
 "use server"
 
-import { prisma } from "@/db";
+import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 

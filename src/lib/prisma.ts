@@ -13,4 +13,6 @@ if (process.env.NODE_ENV !== 'production') {
     gloalForPrimsa.prisma = prisma
 }
 
+export default prisma
+
 // All this helps to avoid creating a new PrismaClient instance for every request, which is very inefficient.

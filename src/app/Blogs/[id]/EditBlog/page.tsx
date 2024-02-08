@@ -1,5 +1,5 @@
 import { UpdateBlog } from "@/app/api/Blog/route"
-import { prisma } from "@/db"
+import { prisma } from "@/lib/prisma"
 import { BlogPost } from "@prisma/client"
 
 export default async function Page({ params } : {params: {id: string}}) {
