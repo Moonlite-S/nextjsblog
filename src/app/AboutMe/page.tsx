@@ -14,6 +14,7 @@ export default function AboutMe() {
 
             <BoxDiv>
                 <p className="indent-5">Hey, I'm Sean (AKA Shawnlings AKA Under The Moonlite AKA Moonlite-S AKA Co Founder of FPGT). I'm a computer science student at University at Rio Grande Valley. I've been doing web design since high school, although I only really got back into it just a couple weeks ago. I've been having a blast learning through different frameworks and concepts. Except frontend. God, I thought I'd like frontend dev because of the creative aspect of it, but damn CSS man. That's annoying as hell.</p>
+                <p>Click <a href="https://github.com/Moonlite-S/nextjsblog" target="_blank">here</a> if you wanna see the Github page</p>
                 <p className="py-5">If you wanted to know the frameworks behind this website, they're are:</p>
 
                 <div className="mx-auto text-center flex flex-col text-xl py-5">
@@ -26,12 +27,12 @@ export default function AboutMe() {
                 </div>
 
                 <p className="font-bold">React</p> <p>was pretty straightforward to learn. Reading the docs were simple and concepts were easy to understand.</p>
-                <p className="font-bold">Next.js </p><p>was a bit more complicated. It was kinda hard learning how page routing worked, but I eventually got it. There's still a lot I don't understand about it, like fetching and APIs, but I can always learn that some other time.</p>
-                <p className="font-bold">Prisma </p> <p>was easy to setup and play. I'm happy I got my own database to create and post blogs. Makes it way easier and organic that I can create it on the site rather than in VSC.</p>
+                <p className="font-bold">Next.js </p><p>was a bit more complicated. It was kinda hard learning how page routing worked, but I eventually got it. There's still a lot I don't understand about it, like fetching and APIs, but I can always learn that in another project.</p>
+                <p className="font-bold">Prisma </p> <p>was easy to setup and play. I'm happy I got my own database using Vercel to create and post blogs. Makes it way easier and organic that I can create it on the site rather than in VSC.</p>
                 <p className="font-bold">Clerk </p> <p>was even easier to setup. Like criminally so. I know authenication is normally way more difficult than this, but Clerk really streamlines this to the point where it's plug and play.</p>
                 <p className="font-bold">TailwindCSS </p> <p>is a godsend. Tailwind makes it so you never have to deal with the horrors of CSS. It also supports custom settings which is something I really appreciate over something like Bootstrap.</p>
                 <p className="font-bold">Framer Motion </p> <p>helps with the animations around the site. I've been trying to find a way to do it without any framework, but that shit's way too hard. This helped a lot.</p>
-                <p className="font-bold">Shadcn</p> <p> deserves a mention. It's great as it's good for picking up components for you use immediately. I used it for pagination for the blogs. There's no dependencies or anything, so it's more like a copy paste thing for easy access. I know I should be learning how to do these things myself, but I can learn it some other time.</p>
+                <p className="font-bold">Shadcn</p> <p> deserves a mention. It's great as it's good for picking up components for you use immediately. I used it for pagination for the blogs. There's no dependencies or anything, so it's more like a copy paste thing for easy access. I know I should be learning how to do these things myself, but I can learn it by doing more projects.</p>
             </BoxDiv>
             
             <BoxDiv>
