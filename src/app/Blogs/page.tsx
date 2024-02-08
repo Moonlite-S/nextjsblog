@@ -1,6 +1,6 @@
 "use client"
 
-import { Blog, Pageination, TransitionUp } from "@/_components/ClientBlog";
+import { Blog, BlogsBoxDiv, BoxDiv, Pageination, TransitionUp } from "@/_components/ClientBlog";
 import { GetArrayBlogs } from "../api/Blog/route";
 import { Suspense, useEffect, useState } from "react";
 import { BlogPost } from "@prisma/client";
@@ -30,22 +30,22 @@ export default function Page() {
                 </h1>
             </div>
 
-            <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded">
+            <BlogsBoxDiv>
                 <Suspense fallback={<div>Loading...</div>} key={Blogs.id}>
-                    {currentItems.map((Blogs: BlogPost) => 
-                        <Blog key={Blogs.id} {...Blogs} />
-                    )}
+                {currentItems.map((Blogs: BlogPost) => 
+                    <Blog key={Blogs.id} {...Blogs} />
+                )}
                 </Suspense>
-            </div>
+            </BlogsBoxDiv>
 
-            <div className="m-5 p-10 bg-mocha-100 transition-all rounded" >
+            <BoxDiv>
                 <Pageination 
                     totalItems={Blogs.length}
                     itemsPerPage={itemsPerPage}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                     />
-            </div>
+            </BoxDiv>
         </TransitionUp> 
         </>
     )

@@ -1,3 +1,4 @@
+import { BoxDiv } from "@/_components/ClientBlog"
 import { UpdateBlog } from "@/app/api/Blog/route"
 import Loading from "@/app/loading"
 import { prisma } from "@/lib/prisma"
@@ -12,7 +13,7 @@ export default async function Page({ params } : {params: {id: string}}) {
     return(
         <>
         <Suspense fallback={<Loading />}>
-            <div className="m-5 p-10 bg-mocha-100">
+            <BoxDiv>
                 <form className="flex flex-col" action={handler} >
                     <label className="text-mocha-1000" htmlFor="title">Title</label>
                     <input type="text" defaultValue={title} name="title" className="bg-mocha-400 text-mocha-900 w-[50%] border-2 border-mocha-900 peer" />
@@ -26,7 +27,7 @@ export default async function Page({ params } : {params: {id: string}}) {
                     <button type="submit" className="border-2 border-mocha-900 bg-mocha-300 py-2 my-5 hover:bg-mocha-500 transition">Update Blog</button>
 
                 </form>
-            </div>
+            </BoxDiv>
         </Suspense>
         </>
     )

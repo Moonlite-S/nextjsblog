@@ -1,12 +1,12 @@
 "use client"
 
 import { CreateBlog } from "@/app/api/Blog/route";
-import { TransitionUp } from "@/_components/ClientBlog";
+import { BoxDiv, TransitionUp } from "@/_components/ClientBlog";
 
 export default function Pages(){
     return (
         <TransitionUp>
-        <div className="m-5 p-10 bg-mocha-100 rounded">
+        <BoxDiv>
             <h1 className="py-2 border-b-2 border-mocha-700">Today's Date: {new Date().toLocaleDateString()} </h1>
             <form className="py-2 flex flex-col" action={CreateBlog} >
                 <label className="text-mocha-1000" htmlFor="title">Title</label>
@@ -20,7 +20,7 @@ export default function Pages(){
 
                 <button type="submit" className="border-2 border-mocha-900 bg-mocha-300 py-2 my-5 hover:bg-mocha-500 transition">Create Blog</button>
             </form>
-        </div>
+        </BoxDiv>
         </TransitionUp>
     )
 }

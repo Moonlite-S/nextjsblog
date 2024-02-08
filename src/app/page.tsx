@@ -1,12 +1,13 @@
 "use client"
 
 import '../_styles/globals.css'
-import { TransitionUp, Blog, HoverUp } from '@/_components/ClientBlog'
+import { TransitionUp, Blog, HoverUp, BoxDiv } from '@/_components/ClientBlog'
 import { GetArrayBlogs } from './api/Blog/route'
 import { BlogPost } from '@prisma/client'
 import { Suspense, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Loading from './loading'
+import { Box } from 'lucide-react'
 
 export default function App() {
   const [Blogs, setBlogs] = useState([])
@@ -40,7 +41,7 @@ export default function App() {
         </HoverUp>
       </div>
 
-      <div className="m-5 p-10 bg-mocha-100 transition-all justify-center rounded">
+      <BoxDiv>
         <p className='my-5'> 
           Even though it's just a normal and bland blog site, I would like to put some random things that will make this page burst with life.
         </p>
@@ -50,9 +51,9 @@ export default function App() {
         <p className='my-5'>
           Navigate through the site using the buttons up top or take a look at the latest blogs below.
         </p>
-      </div>
+      </BoxDiv>
 
-      <div className='m-5 p-10 bg-mocha-100 transition-all justify-center rounded '>
+      <BoxDiv>
         <h1 className='text-center font-bold text-2xl'> Latest Blogs: </h1>
         <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded " >
               {Blogs.slice(0, 3).map((blog: BlogPost) => 
@@ -64,7 +65,7 @@ export default function App() {
         <div className='flex flex-col '>
           <Link href="/Blogs" className='self-center'><button className='bg-mocha-400 text-mocha-1000 transition rounded p-2 m-5 hover:bg-mocha-500 ' >View All Blogs</button></Link>
         </div>
-      </div>
+      </BoxDiv>
     </TransitionUp>
     </>
   )

@@ -59,7 +59,7 @@ export function BlogButtons(id: {id: string}){
 
   return (
 
-    <div className="m-5 p-5 bg-mocha-100 rounded" >
+    <BoxDiv>
       <Protect permission="org:blog:fullperms"
       fallback=
       {
@@ -69,7 +69,7 @@ export function BlogButtons(id: {id: string}){
         <button onClick={() => handler(id.id)} className="px-2 mx-2 bg-mocha-900 hover:bg-mocha-700 rounded transition"><h1 className="text-mocha-100">Delete Blog</h1></button>
         <Link href={`/Blogs/${id.id}/EditBlog`}><button className="px-2 mx-2 bg-mocha-500 hover:bg-mocha-600 rounded transition"><h1>Edit Blog</h1></button></Link>
       </Protect>  
-    </div>
+    </BoxDiv>
 
   )
 }
@@ -154,5 +154,29 @@ export function Pageination (
         </PaginationItem>
       </PaginationContent>
     </Pagination>
+  )
+}
+
+export function BoxDiv(
+  {children} : {children: React.ReactNode}
+) {
+  return (
+    <div className="box-border px-5">
+      <div className="m-5 p-10 mx-auto bg-mocha-100 transition-all justify-center rounded max-w-[90rem] min-w-[70rem] ">
+        {children}
+      </div>
+    </div>
+  )
+}
+
+export function BlogsBoxDiv(
+  {children} : {children: React.ReactNode}
+) {
+  return (
+    <div className="box-border px-5">
+      <div className="m-5 p-10 mx-auto grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded max-w-[90rem] min-w-[70rem] ">
+        {children}
+      </div>
+    </div>
   )
 }
