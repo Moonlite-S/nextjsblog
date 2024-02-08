@@ -4,8 +4,9 @@ import '../_styles/globals.css'
 import { TransitionUp, Blog, HoverUp } from '@/_components/ClientBlog'
 import { GetArrayBlogs } from './api/Blog/route'
 import { BlogPost } from '@prisma/client'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import Link from 'next/link'
+import Loading from './loading'
 
 export default function App() {
   const [Blogs, setBlogs] = useState([])
@@ -54,8 +55,10 @@ export default function App() {
       <div className='m-5 p-10 bg-mocha-100 transition-all justify-center rounded '>
         <h1 className='text-center font-bold text-2xl'> Latest Blogs: </h1>
         <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded " >
-              {Blogs.reverse().slice(0, 3).map((blog: BlogPost) => 
+              {Blogs.slice(0, 3).map((blog: BlogPost) => 
+                <Suspense fallback={<Loading />} key={blog.id}>
                   <Blog key={blog.id} {...blog} />
+                </Suspense>
               )}
         </div>
         <div className='flex flex-col '>

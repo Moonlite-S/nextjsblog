@@ -31,9 +31,11 @@ export default function Page() {
             </div>
 
             <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded">
-                {currentItems.map((Blogs: BlogPost) => 
-                    <Blog key={Blogs.id} {...Blogs} />
-                )}
+                <Suspense fallback={<div>Loading...</div>} key={Blogs.id}>
+                    {currentItems.map((Blogs: BlogPost) => 
+                        <Blog key={Blogs.id} {...Blogs} />
+                    )}
+                </Suspense>
             </div>
 
             <div className="m-5 p-10 bg-mocha-100 transition-all rounded" >

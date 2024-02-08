@@ -12,6 +12,11 @@ This is my first Next.js personal project where I create a solo blog site for my
 
 ### Changelog
 
+(2/7/2024) but in the evening:
+> I managed to deploy the site onto Vercel after some modifications.
+> I needed to go from using SQlite to Vercel Postgre which ended up being easier than I thought the second time around. I tried using it without Prisma, but it was kinda confusing, but using Prisma with it was easier.
+> This will probably be the last commit I make for this project. I do want to start creating others with different frameworks and options.
+
 (2/7/2024):
 > Bro, I forgot I have a README file. I've been doing the changelog on the commits for no reason. To sum up the things I've done til this point, I've added: *Authentication* and a login page, *Transitions* for each page and interaction, created a *database* that holds all my blogs, created a *blog maker* page to easily create more blogs, created a way to *edit and delete blogs*, and finally added some *coffee pictures* to make it more cozy-esque.
 > For the final stretch, I want to add a little more spice to it before deploying it.  
