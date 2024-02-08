@@ -4,15 +4,16 @@ import '../_styles/globals.css'
 import { TransitionUp, Blog, HoverUp } from '@/_components/ClientBlog'
 import { GetArrayBlogs } from './api/Blog/route'
 import { BlogPost } from '@prisma/client'
+import { Suspense, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import Loading from './loading'
 
 export default function App() {
   const [Blogs, setBlogs] = useState([])
 
   useEffect(() => {
     async function fetchData() {
-            const getBlogs= await GetArrayBlogs()
+            const getBlogs = await GetArrayBlogs()
             setBlogs(getBlogs)        
     }
     fetchData()   

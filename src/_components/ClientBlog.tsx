@@ -49,7 +49,7 @@ export function PictureBanner(URL : {URL_String:String}) {
   )
 }
 
-export async function BlogButtons(id: {id: string}){
+export function BlogButtons(id: {id: string}){
   const handler = (id: string) => {
     if (window.confirm("Are you sure you want to delete this blog?"))
       DeleteBlog(id)

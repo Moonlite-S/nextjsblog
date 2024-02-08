@@ -6,7 +6,7 @@ import { Suspense, useEffect, useState } from "react";
 import { BlogPost } from "@prisma/client";
 
 export default function Page() {
-    const [Blogs, setBlogs] = useState([])
+    const [Blogs, setBlogs] = useState<BlogPost>([])
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage, setItemsPerPage] = useState(6)
 

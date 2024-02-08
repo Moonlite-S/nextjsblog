@@ -1,9 +1,21 @@
-import { PictureBanner, BlogButtons, TransitionUp } from "@/_components/ClientBlog"
-import { prisma } from "@/db"
+"use client"
 
-export default async function Page({ params } : {params: {id: string}}) {
-    const blog = await prisma.blogPost.findUnique({where: {id: params.id}})
-    const {title, body, picture, blogCreated} = blog
+import { PictureBanner, BlogButtons, TransitionUp } from "@/_components/ClientBlog"
+import { GetBlog } from "@/app/api/Blog/route"
+import { BlogPost } from "@prisma/client"
+import { useEffect, useState } from "react"
+
+export default function Page({ params } : {params: {id: string}}) {
+    const [Blog, setBlog] = useState<BlogPost>({})
+    const {title, body, picture, blogCreated} = Blog
+
+    useEffect(() => {
+        async function fetchData() {
+            const getBlog = await GetBlog(params.id)
+            setBlog(getBlog)
+        }
+        fetchData()
+    }, [params.id])
 
     return(
         <TransitionUp>

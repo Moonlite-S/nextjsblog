@@ -4,6 +4,15 @@ import { prisma } from "@/db";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
+type BlogPostType = {
+  [key: string]: string;
+  id: string
+  picture: string
+  title: string
+  body: string
+  blogCreated: string
+}
+
 function VerifyUser() {
   const { userId } : { userId: string | null } = auth()
   
@@ -16,12 +25,12 @@ function VerifyUser() {
 }
 
 export async function GetBlog(id: string){
-    const Blog = prisma.blogPost.findUnique({where: {id}})
+    const Blog = await prisma.blogPost.findUnique({where: {id}})
     return Blog
 }
 
 export async function GetBlogs(){
-  const Blogs = prisma.blogPost.findMany()
+  const Blogs = await prisma.blogPost.findMany()
   return Blogs
 }
 
