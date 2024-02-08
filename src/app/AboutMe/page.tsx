@@ -14,7 +14,7 @@ export default function AboutMe() {
 
             <BoxDiv>
                 <p className="indent-5">Hey, I'm Sean (AKA Shawnlings AKA Under The Moonlite AKA Moonlite-S AKA Co Founder of FPGT). I'm a computer science student at University at Rio Grande Valley. I've been doing web design since high school, although I only really got back into it just a couple weeks ago. I've been having a blast learning through different frameworks and concepts. Except frontend. God, I thought I'd like frontend dev because of the creative aspect of it, but damn CSS man. That's annoying as hell.</p>
-                <p>Click <a href="https://github.com/Moonlite-S/nextjsblog" target="_blank">here</a> if you wanna see the Github page</p>
+                <p className="pt-5">Click <a href="https://github.com/Moonlite-S/nextjsblog" target="_blank" className="text-mocha-1100">here</a> if you wanna see the Github page.</p>
                 <p className="py-5">If you wanted to know the frameworks behind this website, they're are:</p>
 
                 <div className="mx-auto text-center flex flex-col text-xl py-5">
