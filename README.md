@@ -23,3 +23,6 @@ This is my first Next.js personal project where I create a solo blog site for my
 
 (1/29/2024):
 > I haven't actually done any changelog before this, but I did do a lot. Up til this point, I had done: the Home, Blogs, and About Me pages with their respective contents (except for the About Me page).
+
+(1/25/2024):
+> This was the first day the project started.
