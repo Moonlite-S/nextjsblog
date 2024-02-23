@@ -1,8 +1,7 @@
 "use client"
 
 import { PictureBanner, BlogButtons, TransitionUp, BoxDiv } from "@/_components/ClientBlog"
-import { GetBlog } from "@/app/api/Blog/route"
-import Loading from "@/app/loading"
+import { GetBlog } from "@/api/Blog/route"
 import { BlogPost } from "@prisma/client"
 import { Suspense, useEffect, useState } from "react"
 
@@ -20,7 +19,6 @@ export default function Page({ params } : {params: {id: string}}) {
 
     return(
         <TransitionUp>
-        <Suspense fallback={<Loading />}>
             <div className="box-border px-5">
                 <div className="m-5 mx-auto bg-mocha-100 justify-center rounded max-w-[90rem] min-w-[70rem]" >
                     <PictureBanner URL_String={picture}/>
@@ -30,13 +28,10 @@ export default function Page({ params } : {params: {id: string}}) {
                     </div>
                 </div>
             </div>
-        </Suspense>
         
-        <Suspense fallback={<Loading />}>
             <BoxDiv>
                 <h1 className="msg-wrapper">{body}</h1>
             </BoxDiv>
-        </Suspense>
 
         <BlogButtons id={params.id}/>
         </TransitionUp>

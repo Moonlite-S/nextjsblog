@@ -12,6 +12,10 @@ This is my first Next.js personal project where I create a solo blog site for my
 
 ### Changelog
 
+(2/22/2024)
+> Replace ShadCN's pagination wtih my own. Now only loads six blogs per page for faster load times for high blog counts.
+> Changed some text around the About Me Page.
+
 (2/7/2024) but in the evening:
 > I managed to deploy the site onto Vercel after some modifications.
 > I needed to go from using SQlite to Vercel Postgre which ended up being easier than I thought the second time around. I tried using it without Prisma, but it was kinda confusing, but using Prisma with it was easier.

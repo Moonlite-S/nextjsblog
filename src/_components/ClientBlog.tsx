@@ -2,17 +2,9 @@
 
 import Link from "next/link"
 import { BlogPost } from "@prisma/client"
-import { DeleteBlog } from "../app/api/Blog/route"
+import { DeleteBlog } from "../api/Blog/route"
 import { Protect } from "@clerk/nextjs"
 import { AnimatePresence, motion } from "framer-motion"
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/_components/ui/pagination"
 
 export function Blog(
   {id, picture, title, body, blogCreated}: BlogPost
@@ -100,63 +92,6 @@ export function HoverUp(
   )
 }
 
-export function Pageination (
-  {
-    totalItems,
-    itemsPerPage,
-    currentPage,
-    setCurrentPage 
-  } : {
-    totalItems: number,
-    itemsPerPage: number,
-    currentPage: number,
-    setCurrentPage: any
-  }
-) {
-
-  let pages = []
-  for (let i = 1; i<=Math.ceil(totalItems/itemsPerPage); i++){
-    pages.push(i)
-  }
-
-  const handleNextPage = () => {
-    if (currentPage < pages.length){
-      setCurrentPage(currentPage + 1)
-    }
-  }
-
-  const handlePrevPage = () => {
-    if (currentPage > 1){
-      setCurrentPage(currentPage - 1)
-    }
-  }
-
-  return(
-    <Pagination className="">
-      <PaginationContent className="">
-        <PaginationItem >
-          <PaginationPrevious onClick={() => handlePrevPage()} className="px-5 hover:bg-mocha-500">
-            Previous
-          </PaginationPrevious>
-        </PaginationItem>
-
-          {pages.map((page, idx) => (
-            <PaginationItem
-              key={idx}>
-
-              <PaginationLink onClick={() => setCurrentPage(page)} className={currentPage === page ? "bg-mocha-500 rounded-md px-8" : "px-8 hover:bg-mocha-300 rounded-md transition"}>{page}</PaginationLink>
-
-            </PaginationItem>
-          ))}
-
-        <PaginationItem>
-          <PaginationNext onClick={() => handleNextPage()} className="px-5 hover:bg-mocha-500">Next</PaginationNext>
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
-  )
-}
-
 export function BoxDiv(
   {children} : {children: React.ReactNode}
 ) {
@@ -178,5 +113,18 @@ export function BlogsBoxDiv(
         {children}
       </div>
     </div>
+  )
+}
+
+export function Pagination(
+  {currentPage, totalPages, handler} : 
+  {currentPage: number, totalPages: number, handler: (updateCurrentPage: number) => void}
+) {
+  return(
+    <div className="flex flex-row items-center mx-auto justify-center">
+      <button onClick={() => handler(currentPage-1)} className="bg-mocha-400 p-5 mx-5 hover:bg-mocha-500 transition rounded-lg">Back</button>
+      <p className="p-5 mx-5 transition rounded-lg">{currentPage} / {totalPages}</p>
+      <button onClick={() => handler(currentPage+1)} className="bg-mocha-400 p-5 mx-5 hover:bg-mocha-500 transition rounded-lg">Next</button>
+    </div>  
   )
 }

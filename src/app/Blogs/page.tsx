@@ -1,28 +1,36 @@
 "use client"
 
-import { Blog, BlogsBoxDiv, BoxDiv, Pageination, TransitionUp } from "@/_components/ClientBlog";
-import { GetArrayBlogs } from "../api/Blog/route";
-import { Suspense, useEffect, useState } from "react";
+import { Blog, BlogsBoxDiv, BoxDiv, Pagination, TransitionUp } from "@/_components/ClientBlog";
+import { GetBlogCount, GetPaginatedBlogs } from "../../api/Blog/route";
+import { useEffect, useState } from "react";
 import { BlogPost } from "@prisma/client";
 
 export default function Page() {
     const [Blogs, setBlogs] = useState<BlogPost>([])
     const [currentPage, setCurrentPage] = useState(1)
-    const [itemsPerPage, setItemsPerPage] = useState(6)
+    const [totalPages, setTotalPages] = useState(0)
+    const [isFullyLoaded, setIsFullyLoaded] = useState(false)
 
-    const lastItemIndex = currentPage * itemsPerPage
-    const firstItemIndex = lastItemIndex - itemsPerPage
-    const currentItems = Blogs.slice(firstItemIndex, lastItemIndex)
+    const handler = (updateCurrentPage: number) => {
+        if (updateCurrentPage < 1 || updateCurrentPage > totalPages)
+            return
+        setIsFullyLoaded(false)
+        setCurrentPage(updateCurrentPage)
+    }
 
     useEffect(() => {
         async function fetchData() {
-                const getBlogs= await GetArrayBlogs()
-                setBlogs(getBlogs)        
+                const getBlogs= await GetPaginatedBlogs(currentPage)
+                const getTotalBlogs = await GetBlogCount()
+                setBlogs(getBlogs)    
+                setTotalPages(Math.ceil(getTotalBlogs / 6))
+                setIsFullyLoaded(true)
         }
         fetchData()   
-    }, [])
+        console.log("On page: " + currentPage)
+    }, [currentPage])
+
     return(
-        <>
         <TransitionUp>
             <div className="h-[10rem] bg-cover bg-mocha-100 transition-all justify-center rounded" style={{backgroundImage: 'url("/coffee2.jpg")', backgroundPosition: "top", backgroundColor: "#000000"}}>
                 <h1 className='text-mocha-100 text-5xl font-bold text-right drop-shadow-xl py-10 pr-10 hover:drop-shadow-2xl transition'>
@@ -31,22 +39,15 @@ export default function Page() {
             </div>
 
             <BlogsBoxDiv>
-                <Suspense fallback={<div>Loading...</div>} key={Blogs.id}>
-                {currentItems.map((Blogs: BlogPost) => 
+            {isFullyLoaded ? 
+                Blogs.map((Blogs: BlogPost) => 
                     <Blog key={Blogs.id} {...Blogs} />
-                )}
-                </Suspense>
+                ) : <p>Loading...</p>}
             </BlogsBoxDiv>
 
             <BoxDiv>
-                <Pageination 
-                    totalItems={Blogs.length}
-                    itemsPerPage={itemsPerPage}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    />
+                <Pagination currentPage={currentPage} totalPages={totalPages} handler={handler}/>
             </BoxDiv>
         </TransitionUp> 
-        </>
     )
 }

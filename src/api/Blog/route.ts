@@ -17,11 +17,16 @@ function VerifyUser() {
   const { userId } : { userId: string | null } = auth()
   
   if (!userId) {
-    throw new Error("Not logged in")
+    throw new Error("Not logged in. You shouldn't be allowed here.")
   }
 
   else
     return
+}
+
+export async function GetBlogCount(){
+  const BlogCount = await prisma.blogPost.count()
+  return BlogCount
 }
 
 export async function GetBlog(id: string){
@@ -30,13 +35,19 @@ export async function GetBlog(id: string){
 }
 
 export async function GetBlogs(){
-  const Blogs = await prisma.blogPost.findMany()
+  const Blogs = await prisma.blogPost.findMany({
+    orderBy: {createdAt: 'desc'},
+  })
   return Blogs
 }
 
-export async function GetArrayBlogs() {
-  const Blogs = await GetBlogs()
-  return Blogs.reverse()
+export async function GetPaginatedBlogs(currentPage: number){
+  const Blogs = await prisma.blogPost.findMany({
+    orderBy: {createdAt: 'desc'},
+    skip: (currentPage - 1) * 6,
+    take: 6
+  })
+  return Blogs
 }
 
 export async function DeleteBlog(id: string){

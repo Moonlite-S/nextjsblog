@@ -2,20 +2,20 @@
 
 import '../_styles/globals.css'
 import { TransitionUp, Blog, HoverUp, BoxDiv } from '@/_components/ClientBlog'
-import { GetArrayBlogs } from './api/Blog/route'
+import { GetBlogs } from '../api/Blog/route'
 import { BlogPost } from '@prisma/client'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Loading from './loading'
-import { Box } from 'lucide-react'
 
 export default function App() {
   const [Blogs, setBlogs] = useState([])
+  const [isFullyLoaded, setIsFullyLoaded] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
-            const getBlogs = await GetArrayBlogs()
-            setBlogs(getBlogs)        
+            const getBlogs = await GetBlogs()
+            setBlogs(getBlogs) 
+            setIsFullyLoaded(true)       
     }
     fetchData()   
 }, [])
@@ -56,11 +56,9 @@ export default function App() {
       <BoxDiv>
         <h1 className='text-center font-bold text-2xl'> Latest Blogs: </h1>
         <div className="m-5 p-10 grid grid-cols-3 gap-10 bg-mocha-100 transition-all justify-center rounded " >
-              {Blogs.slice(0, 3).map((blog: BlogPost) => 
-                <Suspense fallback={<Loading />} key={blog.id}>
+              {isFullyLoaded ? Blogs.slice(0, 3).map((blog: BlogPost) => 
                   <Blog key={blog.id} {...blog} />
-                </Suspense>
-              )}
+              ) : <p>Loading...</p>}
         </div>
         <div className='flex flex-col '>
           <Link href="/Blogs" className='self-center'><button className='bg-mocha-400 text-mocha-1000 transition rounded p-2 m-5 hover:bg-mocha-500 ' >View All Blogs</button></Link>
