@@ -2,7 +2,7 @@
 
 import '../_styles/globals.css'
 import { TransitionUp, Blog, HoverUp, BoxDiv } from '@/_components/ClientBlog'
-import { GetBlogs } from '../api/Blog/route'
+import { GetBlogs } from '../api/Blog/blog'
 import { BlogPost } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'

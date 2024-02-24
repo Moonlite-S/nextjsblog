@@ -1,7 +1,7 @@
 "use client"
 
 import { Blog, BlogsBoxDiv, BoxDiv, Pagination, TransitionUp } from "@/_components/ClientBlog";
-import { GetBlogCount, GetPaginatedBlogs } from "../../api/Blog/route";
+import { GetBlogCount, GetPaginatedBlogs } from "../../api/Blog/blog";
 import { useEffect, useState } from "react";
 import { BlogPost } from "@prisma/client";
 

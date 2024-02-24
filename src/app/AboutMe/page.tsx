@@ -1,6 +1,8 @@
 import { BoxDiv, TransitionUp } from "@/_components/ClientBlog";
 import vfs from "/public/vfs.png";
 import ndm from "/public/hdn.png";
+import fpgt from "/public/fpgt.png";
+import mc from "/public/mc.png";
 import Image from "next/image";
 
 export default function AboutMe() {
@@ -15,7 +17,6 @@ export default function AboutMe() {
             <BoxDiv>
                 <p className="indent-5">Hey, I'm Sean (AKA Shawnlings AKA Under The Moonlite AKA Moonlite-S AKA Co Founder of FPGT). I'm a computer science student at University at Rio Grande Valley. I've been doing web design since high school, although I only really got back into it just a couple weeks ago. I've been having a blast learning through different frameworks and concepts. Except frontend. God, I thought I'd like frontend dev because of the creative aspect of it, but damn CSS man. That's annoying as hell.</p>
                 <p className="pt-5">Click <a href="https://github.com/Moonlite-S/nextjsblog" target="_blank" className="text-mocha-1100">here</a> if you wanna see the Github page.</p>
-                <p>Current Project I'm working on: <span className="italic">Moonlit Cafe</span></p>
                 <p className="py-5">If you wanted to know the frameworks behind this website, they're are:</p>
 
                 <div className="mx-auto text-center flex flex-col text-xl py-5">
@@ -41,6 +42,15 @@ export default function AboutMe() {
 
                 <p className="indent-5">There was also this one. I found this on the Vocaloid site, but I couldn't find the files for it. I was really interested in making fan sites, huh. I made this one before the Vocaloid site and it was just a very simple wiki / fan site for the franchise. (Oh how times have changed...)</p>
                 <Image src={ndm} alt="Hyperdimension Neptunia Fansite" className="py-5" style={{margin: "auto"}}/>
+            </BoxDiv>
+
+            <BoxDiv>
+                <p>Here are the current projects I'm working on the moment: </p>
+                <p><span className="italic">Moonlit Cafe</span> is a e-commerce website that sells ficticious coffee and other coffee related products. It's not actually a real company, but creating an e-commerce site will help me learn a lot of important concepts and ideas.</p>
+                <Image src={mc} alt="Moonlit Cafe with logo and tagline" className="py-5" style={{margin: 'auto'}}/>
+
+                <p><span className="italic">FPGT Nuzlockes</span> is a site that keeps track of me and my friends' Nuzlockes. Whether we pass or fail, it gets recorded so we can archive how long it takes til we can actually beat a Soul-link Randomizer Nuzlocke.</p>
+                <Image src={fpgt} alt="FPGT Front Page prototype design" className="py-5" style={{margin: 'auto'}}/>
             </BoxDiv>
         </TransitionUp>
     )

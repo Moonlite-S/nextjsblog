@@ -1,7 +1,7 @@
 "use client"
 
 import { PictureBanner, BlogButtons, TransitionUp, BoxDiv } from "@/_components/ClientBlog"
-import { GetBlog } from "@/api/Blog/route"
+import { GetBlog } from "@/api/Blog/blog"
 import { BlogPost } from "@prisma/client"
 import { Suspense, useEffect, useState } from "react"
 

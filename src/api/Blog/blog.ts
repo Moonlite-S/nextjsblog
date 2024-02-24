@@ -1,8 +1,8 @@
 "use server"
 
 import { prisma } from "@/lib/prisma";
-import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { VerifyUser } from "../auth/auth";
 
 type BlogPostType = {
   [key: string]: string;
@@ -13,16 +13,6 @@ type BlogPostType = {
   blogCreated: string
 }
 
-function VerifyUser() {
-  const { userId } : { userId: string | null } = auth()
-  
-  if (!userId) {
-    throw new Error("Not logged in. You shouldn't be allowed here.")
-  }
-
-  else
-    return
-}
 
 export async function GetBlogCount(){
   const BlogCount = await prisma.blogPost.count()

@@ -12,6 +12,9 @@ This is my first Next.js personal project where I create a solo blog site for my
 
 ### Changelog
 
+(2/23/2024)
+> Just various changes
+
 (2/22/2024)
 > Replace ShadCN's pagination wtih my own. Now only loads six blogs per page for faster load times for high blog counts.
 > Changed some text around the About Me Page.

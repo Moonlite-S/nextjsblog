@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { BlogPost } from "@prisma/client"
-import { DeleteBlog } from "../api/Blog/route"
+import { DeleteBlog } from "../api/Blog/blog"
 import { Protect } from "@clerk/nextjs"
 import { AnimatePresence, motion } from "framer-motion"
 

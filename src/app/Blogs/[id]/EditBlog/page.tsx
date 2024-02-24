@@ -1,8 +1,7 @@
 import { BoxDiv } from "@/_components/ClientBlog"
-import { UpdateBlog } from "@/api/Blog/route"
+import { UpdateBlog } from "@/api/Blog/blog"
 import { prisma } from "@/lib/prisma"
 import { BlogPost } from "@prisma/client"
-import { Suspense } from "react"
 
 export default async function Page({ params } : {params: {id: string}}) {
     const Blog: BlogPost = await prisma.blogPost.findUnique({where: {id: params.id}})

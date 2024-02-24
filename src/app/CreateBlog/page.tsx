@@ -1,6 +1,6 @@
 "use client"
 
-import { CreateBlog } from "@/api/Blog/route";
+import { CreateBlog } from "@/api/Blog/blog";
 import { BoxDiv, TransitionUp } from "@/_components/ClientBlog";
 
 export default function Pages(){
